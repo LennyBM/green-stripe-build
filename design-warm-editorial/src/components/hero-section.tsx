@@ -250,12 +250,12 @@ export default function HeroSection() {
                 style={{ scale: imgScale }}
               >
                 <Image
-                  src="/images/real/striped-lawn-result.jpg"
-                  alt="Championship-grade striped lawn by Green Stripe"
+                  src="/images/real/van-rainbow-cornwall.jpg"
+                  alt="Green Stripe van under a rainbow in the Cornwall countryside"
                   fill
                   priority
                   className="object-cover warm-photo"
-                  style={{ objectPosition: "center 40%" }}
+                  style={{ objectPosition: "center 55%" }}
                   sizes="(max-width: 1024px) 100vw, 45vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/40 via-transparent to-transparent" />

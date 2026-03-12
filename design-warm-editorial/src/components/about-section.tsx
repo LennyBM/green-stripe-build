@@ -34,7 +34,7 @@ export default function AboutSection() {
               style={{ y: imgY, scale: imgScale }}
             >
               <Image
-                src="/images/founder_photo.webp"
+                src="/images/real/founders-jess-chris.jpg"
                 alt="Chris and Jess Maynard"
                 fill
                 className="object-cover warm-photo"
