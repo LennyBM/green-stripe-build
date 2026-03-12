@@ -1,0 +1,1 @@
+Standard to ultimate lawn care programmes, complete renovations, overseeding, re-turfing, 4-pass scarifying, top dressing, and moss/weed control. Contact: 01288 371343 or office@greenstripelawns.co.uk. Service areas: 40-mile radius across North Cornwall and North Devon (Bude, Wadebridge, Padstow, Launceston, Okehampton, Bideford, Holsworthy).
