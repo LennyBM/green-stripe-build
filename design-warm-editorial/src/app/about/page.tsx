@@ -19,7 +19,7 @@ export default function AboutPage() {
               <div className="absolute -bottom-8 -right-8 w-32 h-32 md:w-40 md:h-40 bg-accent/10 rounded-2xl z-0" />
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(42,31,20,0.2)] z-10">
                 <Image
-                  src="/images/founder_photo.webp"
+                  src="/images/real/founders-jess-chris.jpg"
                   alt="Chris and Jess Maynard — founders of Green Stripe Lawn Care"
                   fill
                   priority
@@ -125,6 +125,27 @@ export default function AboutPage() {
               Her attention to detail extends to the business operations — invoicing, scheduling, supplier relationships, and the digital presence that helps North Cornwall find Green Stripe. Chris often says the lawns wouldn&apos;t look half as good if Jess wasn&apos;t keeping everything else running flawlessly.
             </p></ScrollReveal>
           </div>
+
+          {/* Fleet Image */}
+          <ScrollReveal delay={0.3} className="mt-16">
+            <div className="relative aspect-[16/9] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(42,31,20,0.15)] border-2 border-gold/10">
+              <Image
+                src="/images/real/branded-van.webp"
+                alt="Green Stripe branded transit van — serving North Cornwall and North Devon"
+                fill
+                className="object-cover warm-photo"
+                sizes="(max-width: 768px) 100vw, 800px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/30 to-transparent" />
+              <div className="absolute bottom-6 left-6">
+                <div className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-cream/90 backdrop-blur-md border border-gold/20 shadow-lg">
+                  <div className="w-2 h-2 rounded-full bg-accent" />
+                  <span className="text-xs font-medium text-fg tracking-wider uppercase">Our Fleet</span>
+                  <span className="ml-auto text-xs text-muted">Widemouth Bay</span>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

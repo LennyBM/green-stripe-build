@@ -177,6 +177,28 @@ export default function ResultsPage() {
         </div>
       </section>
 
+      {/* Cinematic Cornwall Banner */}
+      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
+        <Image
+          src="/images/real/van-rainbow-cornwall.jpg"
+          alt="Green Stripe van under a rainbow in the Cornwall countryside"
+          fill
+          className="object-cover warm-photo"
+          style={{ objectPosition: "center 60%" }}
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/70 via-bg-dark/20 to-transparent" />
+        <div className="absolute bottom-10 left-0 right-0 z-10">
+          <div className="max-w-6xl mx-auto px-6 md:px-12">
+            <p className="text-cream/80 text-sm tracking-[0.3em] uppercase mb-3">Proudly Serving</p>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold text-cream leading-tight">
+              North Cornwall &<br />
+              <em className="italic text-gold-light">North Devon</em>
+            </h2>
+          </div>
+        </div>
+      </section>
+
       <AnimatePresence>
         {selectedStudy && <CaseStudyModal study={selectedStudy} onClose={() => setSelectedStudy(null)} />}
       </AnimatePresence>
