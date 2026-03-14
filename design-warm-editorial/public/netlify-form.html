@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Netlify Form Detection</title></head>
+<body>
+  <!-- This hidden form is required for Netlify to detect form fields in static export builds.
+       It is never shown to users; Netlify's build bot reads it at deploy time. -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input name="form-name" type="hidden" value="contact" />
+    <input name="bot-field" />
+    <input name="service" />
+    <input name="name" />
+    <input name="email" type="email" />
+    <input name="phone" type="tel" />
+    <textarea name="message"></textarea>
+    <input name="consent" />
+  </form>
+</body>
+</html>

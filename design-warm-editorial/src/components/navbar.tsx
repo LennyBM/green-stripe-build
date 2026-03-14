@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Phone, Menu, X } from "lucide-react";
 import { navLinks } from "@/lib/site-data";
+import { SITE_CONFIG, getPhoneUrl } from "@/lib/config";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -18,15 +19,19 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-bg/90 backdrop-blur-xl border-b border-gold/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-bg/85 backdrop-blur-2xl border-b border-gold/15 shadow-[0_1px_20px_rgba(42,31,20,0.04)]">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-18 py-4">
-        <Link href="/" className="relative flex items-center">
+        <Link
+          href="/"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="relative flex items-center"
+        >
           <Image
-            src="/images/real/logo.jpg"
+            src="/images/real/logo-transparent.webp"
             alt="Green Stripe Lawn Care"
-            width={180}
-            height={35}
-            className="h-8 w-auto object-contain mix-blend-multiply"
+            width={260}
+            height={48}
+            className="h-11 w-auto object-contain"
             priority
           />
         </Link>
@@ -55,13 +60,13 @@ export default function Navbar() {
         </div>
 
         <a
-          href="tel:+441288371343"
+          href={getPhoneUrl()}
           className="hidden md:flex items-center gap-2 text-sm text-accent font-medium hover:text-accent-light transition-colors"
         >
-          <Phone className="w-3.5 h-3.5" /> 01288 371343
+          <Phone className="w-3.5 h-3.5" /> {SITE_CONFIG.phoneDisplay}
         </a>
 
-        <button className="md:hidden text-fg" onClick={() => setOpen(!open)} aria-label="Toggle menu">
+        <button className="md:hidden text-fg" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
@@ -92,8 +97,8 @@ export default function Navbar() {
                   {l.label}
                 </Link>
               ))}
-              <a href="tel:+441288371343" className="text-accent font-medium mt-2">
-                01288 371343
+              <a href={getPhoneUrl()} className="text-accent font-medium mt-2">
+                {SITE_CONFIG.phoneDisplay}
               </a>
             </div>
           </motion.div>

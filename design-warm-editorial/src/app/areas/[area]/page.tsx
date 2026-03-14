@@ -18,9 +18,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { area: areaSlug } = await params;
   const area = areas.find((a) => a.slug === areaSlug);
   if (!area) return {};
+  const county = ["bude", "wadebridge", "padstow", "launceston", "holsworthy"].includes(area.slug) ? "Cornwall" : "Devon";
   return {
-    title: `Lawn Care in ${area.name}`,
-    description: `Professional lawn care services in ${area.name}. ${area.desc.slice(0, 150)}...`,
+    title: `Lawn Care in ${area.name}, ${county}`,
+    description: `Professional lawn care services in ${area.name}. Scarifying, overseeding, moss control & lawn renovations. Championship-grade results from Green Stripe.`,
+    alternates: {
+      canonical: `https://www.greenstripelawns.co.uk/areas/${area.slug}`,
+    },
+    openGraph: {
+      title: `Lawn Care in ${area.name} | Green Stripe`,
+      description: `${area.desc.slice(0, 200)}`,
+      url: `https://www.greenstripelawns.co.uk/areas/${area.slug}`,
+      images: [
+        {
+          url: "/images/real/branded-van.webp",
+          width: 1200,
+          height: 630,
+          alt: `Green Stripe Lawn Care serving ${area.name}`,
+        },
+      ],
+    },
   };
 }
 
@@ -29,8 +46,42 @@ export default async function AreaDetailPage({ params }: Props) {
   const area = areas.find((a) => a.slug === areaSlug);
   if (!area) notFound();
 
+  /* JSON-LD: LocalBusiness with specific areaServed */
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Green Stripe Lawn Care",
+    url: `https://www.greenstripelawns.co.uk/areas/${area.slug}`,
+    telephone: "+441288371343",
+    areaServed: {
+      "@type": "City",
+      name: area.name,
+    },
+    description: `Professional lawn care services in ${area.name}. ${area.desc}`,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Widemouth Bay",
+      addressRegion: "Cornwall",
+      addressCountry: "GB",
+    },
+  };
+
+  /* JSON-LD: BreadcrumbList */
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.greenstripelawns.co.uk" },
+      { "@type": "ListItem", position: 2, name: `Lawn Care in ${area.name}`, item: `https://www.greenstripelawns.co.uk/areas/${area.slug}` },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-bg">
+      {/* JSON-LD Structured Data */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+
       {/* Hero */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-bg-alt overflow-hidden">
         <div className="blob-accent w-[500px] h-[500px] -top-40 -right-40" />

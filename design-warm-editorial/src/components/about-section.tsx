@@ -33,15 +33,31 @@ export default function AboutSection() {
               className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(42,31,20,0.2)] z-10"
               style={{ y: imgY, scale: imgScale }}
             >
-              <Image
-                src="/images/real/founders-jess-chris.jpg"
-                alt="Chris and Jess Maynard"
-                fill
-                className="object-cover warm-photo"
-                style={{ objectPosition: "center 20%" }}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+              <div className="grid grid-cols-2 h-full">
+                <div className="relative">
+                  <Image
+                    src="/images/real/chris-portrait.jpg"
+                    alt="Chris Maynard — Green Stripe founder"
+                    fill
+                    className="object-cover warm-photo"
+                    style={{ objectPosition: "center 15%" }}
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
+                <div className="relative">
+                  <Image
+                    src="/images/real/jess-portrait.jpg"
+                    alt="Jess Maynard — Green Stripe office manager"
+                    fill
+                    className="object-cover warm-photo"
+                    style={{ objectPosition: "center 15%" }}
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
+              </div>
               <div className="absolute inset-0 ring-1 ring-inset ring-fg/5 rounded-3xl" />
+              {/* Center divider line */}
+              <div className="absolute inset-y-0 left-1/2 w-px bg-cream/30 z-10" />
             </motion.div>
 
             <motion.div
@@ -74,19 +90,17 @@ export default function AboutSection() {
               The Green Stripe Standard
             </p>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-fg mb-10 leading-[1.1]">
-              15 Years on the<br />Top Golf Courses.<br />
-              <em className="italic text-accent">Now in Your Garden.</em>
+              We&apos;re Chris &amp; Jess.<br />
+              <em className="italic text-accent">This is What We Do.</em>
             </h2>
 
             <div className="space-y-6 text-lg text-fg-light leading-relaxed font-light">
-              <p>Green Stripe Lawn Care is proudly owned and run by husband-and-wife team Chris and Jess Maynard.</p>
+              <p>We&apos;re a husband-and-wife team based in Widemouth Bay, and we genuinely love what we do. Every lawn we treat feels personal — because it is.</p>
               <p>
-                <strong className="text-fg font-semibold">Chris</strong> brings over 15 years of elite turf
-                management experience, having prepared and maintained grass on some of the UK&apos;s top golf courses.
+                <strong className="text-fg font-semibold">Chris</strong> has spent over 15 years in professional turf management, learning his craft on some of the finest greens in the country. That same precision now goes into every home lawn we care for.
               </p>
               <p>
-                <strong className="text-fg font-semibold">Jess</strong> is the organizational heartbeat of the
-                business — flawless scheduling, transparent communication, and unparalleled client care.
+                <strong className="text-fg font-semibold">Jess</strong> runs the business side — scheduling, communications, and making sure every customer feels looked after from the first call.
               </p>
             </div>
 

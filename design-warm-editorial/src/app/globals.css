@@ -7,8 +7,8 @@
   --color-fg: #2a1f14;
   --color-fg-light: #5a4a38;
   --color-muted: #6b5a42;
-  --color-accent: #4a6741;
-  --color-accent-light: #5d8353;
+  --color-accent: #1a9a8a;
+  --color-accent-light: #22b8a5;
   --color-gold: #c4a882;
   --color-gold-light: #d4bc9a;
   --color-cream: #faf6ef;
@@ -37,10 +37,45 @@
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.025;
+  opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
+}
+
+/* ─── Glassmorphic Card ─── */
+.glass-card {
+  border-radius: 1.5rem;
+  border: 1px solid rgba(196,168,130,0.12);
+  background: rgba(250,246,239,0.04);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2), inset 0 1px 0 rgba(250,246,239,0.06);
+}
+
+/* ─── Section Ambient Glow ─── */
+.section-glow {
+  position: relative;
+}
+.section-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  opacity: 0.3;
+}
+
+/* ─── Gold Accent Divider ─── */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), var(--color-gold), transparent);
+  opacity: 0.15;
+  margin: 0 auto;
+  max-width: 200px;
 }
 
 /* ─── Custom Cursor ─── */
@@ -144,6 +179,25 @@
   opacity: 0.3;
 }
 
+/* ─── Premium CTA Button ─── */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+  color: var(--color-cream);
+  box-shadow: 0 4px 20px rgba(26, 154, 138, 0.25), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-premium:hover {
+  box-shadow: 0 8px 35px rgba(26, 154, 138, 0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+  filter: brightness(1.08);
+}
+.btn-premium::before {
+  content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+}
+.btn-premium:hover::before { animation: shimmer 0.6s ease-in-out forwards; }
+
 /* ─── Shimmer ─── */
 .btn-shimmer { position: relative; overflow: hidden; }
 .btn-shimmer::before {
@@ -173,4 +227,44 @@
   0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: translate(0, 0) scale(1); }
   33% { border-radius: 40% 60% 70% 30% / 30% 70% 40% 60%; transform: translate(20px, -15px) scale(1.05); }
   66% { border-radius: 50% 50% 40% 60% / 70% 40% 60% 30%; transform: translate(-10px, 10px) scale(0.97); }
+}
+
+/* ─── Spring Banner ─── */
+.spring-banner-gradient {
+  background: linear-gradient(135deg, #1a5c3a 0%, #1a6b42 25%, #2a1f14 50%, #1a5c3a 75%, #1a6b42 100%);
+  background-size: 300% 300%;
+  animation: spring-gradient 8s ease infinite;
+}
+@keyframes spring-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.spring-banner-shimmer {
+  background: linear-gradient(120deg, transparent 20%, rgba(193,167,115,0.08) 40%, rgba(193,167,115,0.15) 50%, rgba(193,167,115,0.08) 60%, transparent 80%);
+  background-size: 200% 100%;
+  animation: spring-shimmer 3s ease-in-out infinite;
+}
+@keyframes spring-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.spring-marquee-track {
+  animation: spring-marquee 15s linear infinite;
+}
+.spring-marquee-track:hover {
+  animation-play-state: paused;
+}
+@keyframes spring-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─── Reduced-Motion Accessibility ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

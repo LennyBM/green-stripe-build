@@ -19,8 +19,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = services.find((s) => s.slug === slug);
   if (!service) return {};
   return {
-    title: service.title,
-    description: service.desc,
+    title: `${service.title} — Professional Lawn Care`,
+    description: `${service.desc.slice(0, 155)}...`,
+    alternates: {
+      canonical: `https://www.greenstripelawns.co.uk/services/${service.slug}`,
+    },
+    openGraph: {
+      title: `${service.title} | Green Stripe Lawn Care`,
+      description: service.desc.slice(0, 200),
+      url: `https://www.greenstripelawns.co.uk/services/${service.slug}`,
+      images: [
+        {
+          url: "/images/real/striped-lawn.jpg",
+          width: 1200,
+          height: 630,
+          alt: `${service.title} by Green Stripe Lawn Care`,
+        },
+      ],
+    },
   };
 }
 
@@ -29,11 +45,58 @@ export default async function ServiceDetailPage({ params }: Props) {
   const service = services.find((s) => s.slug === slug);
   if (!service) notFound();
 
+  /* JSON-LD: Service schema */
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.desc,
+    provider: {
+      "@type": "LocalBusiness",
+      name: "Green Stripe Lawn Care",
+      url: "https://www.greenstripelawns.co.uk",
+    },
+    areaServed: [
+      "Bude", "Wadebridge", "Padstow", "Launceston", "Okehampton", "Bideford", "Holsworthy",
+    ],
+    url: `https://www.greenstripelawns.co.uk/services/${service.slug}`,
+  };
+
+  /* JSON-LD: HowTo schema from process steps */
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `How We Deliver ${service.title}`,
+    description: service.desc,
+    step: service.process.map((step, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: step,
+      text: step,
+    })),
+  };
+
+  /* JSON-LD: BreadcrumbList */
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.greenstripelawns.co.uk" },
+      { "@type": "ListItem", position: 2, name: "Services", item: "https://www.greenstripelawns.co.uk/services" },
+      { "@type": "ListItem", position: 3, name: service.title, item: `https://www.greenstripelawns.co.uk/services/${service.slug}` },
+    ],
+  };
+
   const Icon = service.icon;
   const relatedCase = caseStudies[0]; // Show a related case study
 
   return (
     <main className="min-h-screen bg-bg">
+      {/* JSON-LD Structured Data */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+
       {/* Hero */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-cream overflow-hidden">
         <div className="blob-accent w-[500px] h-[500px] -top-40 -right-40" />

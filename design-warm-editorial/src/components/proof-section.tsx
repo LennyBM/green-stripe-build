@@ -16,7 +16,7 @@ export default function ProofSection() {
             className="max-w-2xl"
           >
             <div className="w-16 h-0.5 bg-gold mb-8" />
-            <p className="text-sm tracking-[0.3em] text-cream/40 uppercase mb-6">Cornish Case Studies</p>
+            <p className="text-sm tracking-[0.3em] text-cream/70 uppercase mb-6">Cornish Case Studies</p>
             <h2 className="text-4xl md:text-6xl font-heading font-bold leading-[1.08] mb-8">
               Don&apos;t Just Take Our<br />
               <em className="italic text-gold">Word For It.</em>
@@ -27,7 +27,7 @@ export default function ProofSection() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
           {caseStudies.map((c, i) => (
             <motion.div
               key={c.loc}
@@ -35,7 +35,7 @@ export default function ProofSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: i * 0.15 }}
-              className="group rounded-3xl overflow-hidden bg-cream/5 border border-cream/10 hover:border-gold/30 transition-all duration-500"
+              className={`group rounded-3xl overflow-hidden bg-cream/5 border border-cream/10 hover:border-gold/30 transition-all duration-500 ${i === 0 ? 'md:col-span-7' : 'md:col-span-5 md:mt-16'}`}
             >
               <div className="relative h-72 sm:h-80 overflow-hidden">
                 <Image

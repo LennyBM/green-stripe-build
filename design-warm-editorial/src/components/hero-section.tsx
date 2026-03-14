@@ -1,9 +1,9 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
+import { ChevronDown, Phone, ArrowRight } from "lucide-react";
+import { SITE_CONFIG, getPhoneUrl, GRAIN_BG_SVG } from "@/lib/config";
 
 /* ═══════════════════════════════════════════════════════════
    ANIMATED COUNTER — counts up on mount
@@ -17,7 +17,7 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
     const step = (now: number) => {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 4); // ease-out quart
+      const eased = 1 - Math.pow(1 - progress, 4);
       setCount(Math.floor(eased * target));
       if (progress < 1) requestAnimationFrame(step);
     };
@@ -78,129 +78,153 @@ function MagneticButton({ children, href, variant = "primary" }: { children: Rea
         y.set((e.clientY - cy) * 0.15);
       }}
       onMouseLeave={() => { x.set(0); y.set(0); }}
-      className={`group relative inline-flex items-center justify-center px-10 py-4 rounded-full text-sm font-medium overflow-hidden transition-all duration-300 ${
+      className={`group relative inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full text-sm font-medium overflow-hidden transition-all duration-300 ${
         variant === "primary"
-          ? "bg-fg text-cream hover:shadow-[0_8px_40px_rgba(42,31,20,0.3)]"
-          : "border-2 border-gold text-muted hover:text-fg hover:border-fg"
+          ? "btn-premium"
+          : "border-2 border-cream/30 text-cream/80 hover:text-cream hover:border-cream/60 hover:bg-cream/5"
       }`}
     >
-      {/* Shimmer sweep */}
       {variant === "primary" && (
-        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
       )}
-      <span className="relative z-10">{children}</span>
+      <span className="relative z-10 flex items-center gap-2">{children}</span>
     </motion.a>
   );
 }
 
 /* ═══════════════════════════════════════════════════════════
-   HERO SECTION — Cinematic Editorial
+   HERO SECTION — Full Cinematic Dark Hero
    ═══════════════════════════════════════════════════════════ */
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
 
-  // Parallax layers at different speeds
   const bgY = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const textY = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const imgY = useTransform(scrollYProgress, [0, 1], [0, 60]);
-  const imgScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.08]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 0.4]);
-  const badgeY = useTransform(scrollYProgress, [0, 1], [0, -30]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 0.3]);
   const scrollArrowOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
   const [loaded, setLoaded] = useState(false);
   useEffect(() => { setLoaded(true); }, []);
 
   return (
-    <section ref={sectionRef} className="relative min-h-[100svh] lg:min-h-[105vh] flex items-end overflow-hidden">
-      {/* ── Layer 1: Full-bleed background image ── */}
-      <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
-        <Image
-          src="/images/real/lawn-summer.jpg"
-          alt="Championship-grade lawn in North Cornwall"
-          fill
-          priority
-          className="object-cover warm-photo scale-110"
-          sizes="100vw"
-        />
-        {/* Cinematic gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-bg/95 via-bg/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-bg/30" />
-        {/* Extra dark overlay on mobile for text legibility */}
-        <div className="absolute inset-0 bg-bg-dark/20 md:bg-transparent transition-colors" />
-        <motion.div className="absolute inset-0 bg-bg-dark/40" style={{ opacity: overlayOpacity }} />
+    <section ref={sectionRef} className="relative min-h-[100svh] flex items-center overflow-hidden bg-bg-dark">
+
+      {/* ── Layer 1: Full-bleed cinematic background ── */}
+      <motion.div className="absolute inset-0 z-0" style={{ y: bgY, scale: bgScale }}>
+        {/* Video background — uses native poster for instant first-frame display */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/images/real/hero-cornish-bungalow.webp"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: "center 30%" }}
+          aria-label="Cinematic lawn striping video showcasing Green Stripe's professional results"
+        >
+          <source src="/videos/hero-lawn-striping.webm" type="video/webm" />
+          <source src="/videos/hero-lawn-striping.mp4#t=0.001" type="video/mp4" />
+          Your browser does not support the video element.
+        </video>
+        {/* Dark cinematic overlays — Apple-style */}
+        <div className="absolute inset-0 bg-gradient-to-r from-bg-dark/90 via-bg-dark/60 to-bg-dark/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/80 via-bg-dark/20 to-bg-dark/40" />
+        <motion.div className="absolute inset-0 bg-bg-dark/30" style={{ opacity: overlayOpacity }} />
+
+        {/* Cinematic vignette */}
+        <div className="absolute inset-0" style={{
+          background: "radial-gradient(ellipse at center, transparent 40%, rgba(42,31,20,0.5) 100%)"
+        }} />
       </motion.div>
 
-      {/* ── Layer 2: Organic decorative shapes ── */}
+      {/* ── Layer 2: Mesh gradient accents ── */}
       <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full"
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, 80]), background: "radial-gradient(circle, rgba(193,167,115,0.08) 0%, transparent 70%)" }}
+          className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full"
+          style={{
+            y: useTransform(scrollYProgress, [0, 1], [0, 80]),
+            background: "radial-gradient(circle, rgba(193,167,115,0.06) 0%, transparent 60%)"
+          }}
         />
         <motion.div
-          className="absolute bottom-20 -left-20 w-[400px] h-[400px] rounded-full"
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -40]), background: "radial-gradient(circle, rgba(45,87,44,0.06) 0%, transparent 70%)" }}
+          className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full"
+          style={{
+            y: useTransform(scrollYProgress, [0, 1], [0, -40]),
+            background: "radial-gradient(circle, rgba(74,103,65,0.08) 0%, transparent 60%)"
+          }}
         />
       </div>
 
-      {/* ── Layer 3: Content ── */}
-      <motion.div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pb-12 sm:pb-20 lg:pb-28" style={{ y: textY }}>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 items-end">
+      {/* ── Layer 3: Film grain ── */}
+      <div className="absolute inset-0 z-[2] opacity-[0.04] pointer-events-none" style={{
+        backgroundImage: GRAIN_BG_SVG,
+        backgroundSize: "256px",
+      }} />
 
-          {/* ── Left: Typography block (7 cols) ── */}
-          <div className="lg:col-span-7 lg:pr-16 pt-32 lg:pt-44">
+      {/* ── Layer 4: Content ── */}
+      <motion.div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-24 sm:py-32 lg:py-0" style={{ y: textY }}>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 items-center min-h-[100svh] lg:min-h-0">
 
-            {/* Location pill — fade in */}
+          {/* ── Left: Typography block ── */}
+          <div className="lg:col-span-7 lg:pr-20 pt-4 sm:pt-8 lg:pt-0">
+
+            {/* Location pill */}
             <motion.div
               initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 1, delay: 0.2 }}
               className="mb-10"
             >
-              <span className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-gold/30 bg-cream/80 backdrop-blur-md text-xs tracking-[0.25em] uppercase text-muted font-medium">
+              <span className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-cream/15 bg-cream/5 backdrop-blur-md text-xs tracking-[0.25em] uppercase text-cream/60 font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                Widemouth Bay · North Cornwall
+                North Cornwall & Devon
               </span>
             </motion.div>
 
-            {/* Main headline — split-text reveal */}
-            <h1 className="text-[clamp(3.2rem,7.5vw,6.5rem)] font-heading font-bold leading-[0.92] tracking-[-0.02em] text-fg mb-8">
-              <SplitTextReveal delay={0.4}>Creating a</SplitTextReveal>
+            {/* Main headline */}
+            <h1 className="text-[clamp(2.5rem,7.5vw,6.5rem)] font-heading font-bold leading-[0.92] tracking-[-0.02em] text-cream mb-6 sm:mb-8">
+              <SplitTextReveal delay={0.4}>Your Lawn</SplitTextReveal>
               <br />
               <span className="inline-block overflow-hidden">
                 <motion.em
-                  className="italic font-normal text-accent inline-block"
+                  className="italic font-normal text-gold inline-block"
                   initial={{ y: "120%", rotateX: 40 }}
                   animate={{ y: "0%", rotateX: 0 }}
                   transition={{ duration: 1, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  Lasting
+                  Deserves
                 </motion.em>
               </span>{" "}
-              <SplitTextReveal delay={0.8}>Legacy</SplitTextReveal>
+              <SplitTextReveal delay={0.8}>Better</SplitTextReveal>
             </h1>
 
-            {/* Subhead — fade in with blur */}
+            {/* Subhead — aspirational, desire-driven */}
             <motion.p
-              className="text-lg sm:text-xl md:text-2xl text-fg-light/80 font-light leading-relaxed max-w-xl mb-8 sm:mb-14 font-heading italic"
+              className="text-base sm:text-lg md:text-2xl text-cream/60 font-light leading-relaxed max-w-xl mb-8 sm:mb-10 font-heading italic"
               initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 1, delay: 1.2 }}
             >
-              Championship-grade lawn care from Chris Maynard — 15 years on the UK&apos;s finest golf courses,
-              now bringing that artisan precision to your home.
+              Imagine stepping outside to a lawn so perfect, your neighbours pause to look.
+              Championship-grade care — now available for homes across Cornwall &amp; Devon.
             </motion.p>
 
-            {/* CTAs — magnetic buttons */}
+            {/* CTAs */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-16"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-12"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.5 }}
             >
-              <MagneticButton href="/contact" variant="primary">Get a Quote</MagneticButton>
-              <MagneticButton href="/services" variant="secondary">Explore Services</MagneticButton>
+              <MagneticButton href="/contact" variant="primary">
+                Book Free Consultation <ArrowRight className="w-4 h-4" />
+              </MagneticButton>
+              <MagneticButton href={getPhoneUrl()} variant="secondary">
+                <Phone className="w-4 h-4" /> {SITE_CONFIG.phoneDisplay}
+              </MagneticButton>
             </motion.div>
 
             {/* Trust strip */}
@@ -210,7 +234,7 @@ export default function HeroSection() {
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 1.8 }}
             >
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1" role="img" aria-label="5 out of 5 stars">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <motion.span
                     key={i}
@@ -218,95 +242,73 @@ export default function HeroSection() {
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 1.8 + i * 0.1, type: "spring", stiffness: 400 }}
+                    aria-hidden="true"
                   >
                     ★
                   </motion.span>
                 ))}
               </div>
-              <div className="w-px h-5 bg-gold/30" />
-              <span className="text-xs text-muted tracking-wide">5-star rated across Cornwall & Devon</span>
+              <div className="w-px h-5 bg-cream/20" />
+              <span className="text-xs text-cream/40 tracking-wide">5-star rated across Cornwall & Devon</span>
             </motion.div>
           </div>
 
-          {/* ── Right: Floating image card (5 cols) ── */}
-          <div className="hidden lg:block lg:col-span-5 relative lg:-ml-16 lg:mb-[-100px]">
+          {/* ── Right: Frosted Glass Stats Card (hidden on mobile to reduce clutter) ── */}
+          <div className="hidden lg:flex lg:col-span-5 justify-center">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 60 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 1.4, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              style={{ y: imgY }}
+              initial={{ opacity: 0, y: 60, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1.2, delay: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="relative w-full max-w-sm"
             >
-              {/* Decorative ring behind image */}
-              <motion.div
-                className="absolute -inset-3 md:-inset-6 rounded-3xl border border-gold/15 z-0"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.5, delay: 1 }}
-              />
+              {/* Glow behind card */}
+              <div className="absolute -inset-px rounded-3xl bg-gradient-to-br from-gold/20 via-transparent to-accent/10 blur-sm" />
 
-              {/* Main image */}
-              <motion.div
-                className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-[0_40px_100px_rgba(42,31,20,0.25)] z-10"
-                style={{ scale: imgScale }}
-              >
-                <Image
-                  src="/images/real/van-rainbow-cornwall.jpg"
-                  alt="Green Stripe van under a rainbow in the Cornwall countryside"
-                  fill
-                  priority
-                  className="object-cover warm-photo"
-                  style={{ objectPosition: "center 55%" }}
-                  sizes="(max-width: 1024px) 100vw, 45vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/40 via-transparent to-transparent" />
-                <div className="absolute inset-0 ring-1 ring-inset ring-white/5 rounded-3xl" />
+              <div className="relative rounded-3xl border border-cream/10 bg-cream/[0.04] backdrop-blur-xl p-10 shadow-[0_40px_100px_rgba(0,0,0,0.3)]">
+                {/* Subtle inner glow */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-cream/5 to-transparent pointer-events-none" />
 
-                {/* "After Treatment" label */}
-                <motion.div
-                  className="absolute bottom-6 left-6 right-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.6, duration: 0.8 }}
-                >
-                  <div className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-cream/90 backdrop-blur-md border border-gold/20 shadow-lg">
-                    <div className="w-2 h-2 rounded-full bg-accent" />
-                    <span className="text-xs font-medium text-fg tracking-wider uppercase">After Treatment</span>
-                    <span className="ml-auto text-xs text-muted">Wadebridge, 2024</span>
+                <div className="relative z-10 space-y-8">
+                  {/* Stats grid */}
+                  <div className="grid grid-cols-2 gap-6">
+                    {[
+                      { val: 15, suffix: "+", label: "Years\nExperience" },
+                      { val: 100, suffix: "+", label: "Happy\nCustomers" },
+                      { val: 40, suffix: "mi", label: "Service\nRadius" },
+                      { val: 5, suffix: ".0", label: "Star\nRating" },
+                    ].map((s, i) => (
+                      <motion.div
+                        key={s.label}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.4 + i * 0.1, duration: 0.6 }}
+                        className="text-center"
+                      >
+                        <p className="text-3xl font-heading font-bold text-cream tabular-nums">
+                          <AnimatedCounter target={s.val} suffix={s.suffix} />
+                        </p>
+                        <p className="text-[10px] text-cream/40 tracking-[0.15em] uppercase mt-1 whitespace-pre-line leading-tight">
+                          {s.label}
+                        </p>
+                      </motion.div>
+                    ))}
                   </div>
-                </motion.div>
-              </motion.div>
-            </motion.div>
 
-            {/* ── Floating stats badge ── */}
-            <motion.div
-              className="absolute -bottom-10 left-4 md:-left-10 z-20"
-              style={{ y: badgeY }}
-              initial={{ opacity: 0, scale: 0.8, y: 40 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ delay: 1.4, duration: 0.8, type: "spring", stiffness: 200 }}
-            >
-              <div className="bg-cream/95 backdrop-blur-xl border-2 border-gold/20 rounded-2xl p-6 shadow-[0_20px_50px_rgba(42,31,20,0.15)]">
-                <p className="text-5xl font-heading font-bold text-fg mb-1 tabular-nums">
-                  <AnimatedCounter target={15} suffix="+" />
-                </p>
-                <p className="text-[10px] text-muted tracking-[0.2em] uppercase leading-tight">
-                  Years Elite<br />Turf Experience
-                </p>
-              </div>
-            </motion.div>
+                  {/* Divider */}
+                  <div className="w-full h-px bg-gradient-to-r from-transparent via-cream/20 to-transparent" />
 
-            {/* ── Floating lawns counter ── */}
-            <motion.div
-              className="absolute -top-4 -right-4 md:right-4 z-20"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.8, duration: 0.6, type: "spring" }}
-            >
-              <div className="bg-accent/95 backdrop-blur-xl rounded-full w-20 h-20 flex flex-col items-center justify-center shadow-lg">
-                <span className="text-lg font-heading font-bold text-cream tabular-nums">
-                  <AnimatedCounter target={100} suffix="+" />
-                </span>
-                <span className="text-[8px] text-cream/70 tracking-wider uppercase">Lawns</span>
+                  {/* Family-run trust message */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 2, duration: 0.8 }}
+                    className="text-center"
+                  >
+                    <p className="text-xs text-cream/30 tracking-wider uppercase mb-1">Family-Run Business</p>
+                    <p className="text-sm font-heading font-semibold text-gold/80">Chris & Jess Maynard</p>
+                    <p className="text-[10px] text-cream/25 mt-0.5">Based in Widemouth Bay, Bude</p>
+                  </motion.div>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -318,14 +320,17 @@ export default function HeroSection() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
         style={{ opacity: scrollArrowOpacity }}
       >
-        <span className="text-[10px] text-muted/60 tracking-[0.3em] uppercase">Scroll</span>
+        <span className="text-[10px] text-cream/30 tracking-[0.3em] uppercase">Scroll</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ChevronDown className="w-4 h-4 text-muted/40" />
+          <ChevronDown className="w-4 h-4 text-cream/20" />
         </motion.div>
       </motion.div>
+
+      {/* ── Bottom gradient fade into next section ── */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg to-transparent z-[5]" />
     </section>
   );
 }

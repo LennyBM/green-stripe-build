@@ -1,8 +1,10 @@
 "use client";
 
 import ContactForm from "@/components/contact-form";
+import ServiceAreaMap from "@/components/service-area-map";
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/scroll-reveal";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { SITE_CONFIG, getPhoneUrl, getEmailUrl } from "@/lib/config";
 
 export default function ContactPage() {
   return (
@@ -30,36 +32,36 @@ export default function ContactPage() {
 
       {/* Contact Info Cards */}
       <section className="py-16 bg-bg-alt">
-        <div className="max-w-4xl mx-auto px-6 md:px-12">
+        <div className="max-w-5xl mx-auto px-6 md:px-12">
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" stagger={0.1}>
             {[
               {
                 icon: Phone,
                 label: "Phone",
-                value: "01288 371343",
-                href: "tel:+441288371343",
-                sub: "Mon–Fri, 8am–6pm",
+                value: SITE_CONFIG.phoneDisplay,
+                href: getPhoneUrl(),
+                sub: SITE_CONFIG.hours.displayHours,
               },
               {
                 icon: Mail,
                 label: "Email",
-                value: "office@greenstripelawns.co.uk",
-                href: "mailto:office@greenstripelawns.co.uk",
+                value: SITE_CONFIG.email,
+                href: getEmailUrl(),
                 sub: "We reply within 24hrs",
               },
               {
                 icon: MapPin,
                 label: "Location",
-                value: "Widemouth Bay",
+                value: SITE_CONFIG.address.locality,
                 href: null,
-                sub: "North Cornwall, EX23",
+                sub: `${SITE_CONFIG.address.region}`,
               },
               {
                 icon: Clock,
                 label: "Hours",
                 value: "Mon–Fri",
                 href: null,
-                sub: "8:00 AM – 6:00 PM",
+                sub: SITE_CONFIG.hours.displayHours,
               },
             ].map((c) => {
               const Icon = c.icon;
@@ -75,7 +77,7 @@ export default function ContactPage() {
                       <Icon className="w-5 h-5 text-accent" />
                     </div>
                     <p className="text-xs text-muted uppercase tracking-wider mb-2">{c.label}</p>
-                    <p className="font-heading font-bold text-fg text-sm mb-1">{c.value}</p>
+                    <p className="font-heading font-bold text-fg text-sm mb-1 break-all">{c.value}</p>
                     <p className="text-xs text-fg-light">{c.sub}</p>
                   </Wrapper>
                 </StaggerItem>
@@ -84,6 +86,9 @@ export default function ContactPage() {
           </StaggerContainer>
         </div>
       </section>
+
+      {/* Map */}
+      <ServiceAreaMap />
 
       {/* Form */}
       <ContactForm />

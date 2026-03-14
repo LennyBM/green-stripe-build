@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { expandedCaseStudies } from "@/lib/site-data";
-import StatsSection from "@/components/stats-section";
 import ContactForm from "@/components/contact-form";
 import ImageComparison from "@/components/image-comparison";
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/scroll-reveal";
@@ -108,26 +107,59 @@ export default function ResultsPage() {
         </div>
       </section>
 
-      {/* Before/After comparison */}
-      <section className="py-20 md:py-28 bg-bg-alt overflow-hidden">
-        <div className="max-w-5xl mx-auto px-6 md:px-12">
+      {/* Before/After comparisons */}
+      <section className="py-16 md:py-28 bg-bg-alt overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-12">
           <ScrollReveal>
-            <div className="text-center mb-12">
-              <p className="text-sm tracking-[0.3em] uppercase text-muted mb-4">Interactive Comparison</p>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-fg">
+            <div className="text-center mb-10 md:mb-12">
+              <p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-muted mb-3 md:mb-4">Interactive Comparison</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-fg">
                 Drag to <em className="italic text-accent">Compare</em>
               </h2>
             </div>
           </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <ImageComparison
-              before="/images/real/weedy-lawn.jpg"
-              after="/images/real/striped-lawn.jpg"
-              beforeLabel="Before"
-              afterLabel="After"
-              className="shadow-[0_20px_60px_rgba(42,31,20,0.15)] border-2 border-gold/15"
-            />
-          </ScrollReveal>
+
+          {/* 3 before/after sliders */}
+          <div className="space-y-10 md:space-y-14">
+            <ScrollReveal delay={0.1}>
+              <ImageComparison
+                before="/images/real/before-weedy.webp"
+                after="/images/real/after-striped.webp"
+                beforeLabel="Before"
+                afterLabel="After"
+                className="shadow-[0_20px_60px_rgba(42,31,20,0.15)] border-2 border-gold/15"
+              />
+              <p className="mt-3 text-center text-sm text-muted font-light">
+                Weed-infested lawn → Championship stripes in 8 weeks
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.15}>
+              <ImageComparison
+                before="/images/real/before-mossy.webp"
+                after="/images/real/after-lush.webp"
+                beforeLabel="Before"
+                afterLabel="After"
+                className="shadow-[0_20px_60px_rgba(42,31,20,0.15)] border-2 border-gold/15"
+              />
+              <p className="mt-3 text-center text-sm text-muted font-light">
+                Heavy moss coverage → Vibrant, healthy green turf
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2}>
+              <ImageComparison
+                before="/images/real/before-patchy.webp"
+                after="/images/real/after-renovated.webp"
+                beforeLabel="Before"
+                afterLabel="After"
+                className="shadow-[0_20px_60px_rgba(42,31,20,0.15)] border-2 border-gold/15"
+              />
+              <p className="mt-3 text-center text-sm text-muted font-light">
+                Thin, patchy lawn → Full renovation with overseeding
+              </p>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
@@ -203,7 +235,6 @@ export default function ResultsPage() {
         {selectedStudy && <CaseStudyModal study={selectedStudy} onClose={() => setSelectedStudy(null)} />}
       </AnimatePresence>
 
-      <StatsSection />
       <ContactForm />
     </div>
   );

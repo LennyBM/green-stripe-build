@@ -7,6 +7,7 @@ import { faqs } from "@/lib/site-data";
 import ContactForm from "@/components/contact-form";
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/scroll-reveal";
 import { ChevronDown, MessageCircle, Phone } from "lucide-react";
+import { SITE_CONFIG, getPhoneUrl, getWhatsAppUrl, safeJsonLd } from "@/lib/config";
 
 /* JSON-LD for FAQ page */
 const faqJsonLd = {
@@ -73,7 +74,7 @@ export default function FAQPage() {
       {/* JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(faqJsonLd) }}
       />
 
       {/* Header */}
@@ -136,13 +137,13 @@ export default function FAQPage() {
           <ScrollReveal delay={0.2}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="tel:+441288371343"
+                href={getPhoneUrl()}
                 className="btn-shimmer inline-flex items-center gap-2 px-10 py-4 bg-cream text-fg rounded-full text-sm font-medium hover:bg-gold hover:text-bg-dark hover:shadow-[0_0_30px_rgba(193,167,115,0.3)] transition-all duration-300"
               >
-                <Phone className="w-4 h-4" /> 01288 371343
+                <Phone className="w-4 h-4" /> {SITE_CONFIG.phoneDisplay}
               </a>
               <a
-                href="https://wa.me/441288371343"
+                href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-10 py-4 border-2 border-cream/30 rounded-full text-sm font-medium text-cream/80 hover:bg-cream/10 hover:border-cream/50 transition-all duration-300"

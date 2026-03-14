@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import StatsSection from "@/components/stats-section";
+import { ShieldCheck, Fingerprint, MessageCircle, Award, GraduationCap, Truck } from "lucide-react";
 import ContactForm from "@/components/contact-form";
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/scroll-reveal";
 
@@ -19,14 +19,34 @@ export default function AboutPage() {
               <div className="absolute -bottom-8 -right-8 w-32 h-32 md:w-40 md:h-40 bg-accent/10 rounded-2xl z-0" />
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(42,31,20,0.2)] z-10">
                 <Image
-                  src="/images/real/founders-jess-chris.jpg"
-                  alt="Chris and Jess Maynard — founders of Green Stripe Lawn Care"
+                  src="/images/real/chris-portrait.jpg"
+                  alt="Chris Maynard — founder and head greenkeeper at Green Stripe Lawn Care"
                   fill
                   priority
                   className="object-cover warm-photo"
-                  style={{ objectPosition: "center 20%" }}
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
+                {/* Credential badges overlaid on portrait */}
+                <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between z-20">
+                  <div className="px-2 py-1.5 rounded-xl bg-cream/90 backdrop-blur-md border border-gold/20 shadow-lg">
+                    <Image
+                      src="/images/real/city-guilds-badge.jpg"
+                      alt="City & Guilds Qualified — PA1 & PA6"
+                      width={72}
+                      height={32}
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="px-2 py-1.5 rounded-xl bg-cream/90 backdrop-blur-md border border-gold/20 shadow-lg">
+                    <Image
+                      src="/images/real/uk-lawn-care-badge.jpg"
+                      alt="UK Lawn Care Association — Proud Member"
+                      width={72}
+                      height={32}
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
               </div>
             </ScrollReveal>
 
@@ -46,6 +66,9 @@ export default function AboutPage() {
                 <div className="space-y-6 text-lg text-fg-light leading-relaxed font-light">
                   <p>
                     Green Stripe Lawn Care was founded by husband-and-wife team <strong className="text-fg font-semibold">Chris</strong> and <strong className="text-fg font-semibold">Jess Maynard</strong> with a single conviction: every home lawn deserves the same care and precision given to a championship golf green.
+                  </p>
+                  <p>
+                    We&apos;re a local family-run business that treats every lawn as if it were our own. Chris brings 15 years of championship greenkeeping expertise; Jess ensures every client receives seamless communication and a premium experience from first call to final stripe.
                   </p>
                 </div>
               </ScrollReveal>
@@ -67,16 +90,16 @@ export default function AboutPage() {
 
           <div className="space-y-8 text-lg text-fg-light leading-relaxed font-light">
             <ScrollReveal delay={0.1}><p>
-              Chris Maynard didn&apos;t learn lawn care from a textbook. He learned it knee-deep in fairways, bunker edges, and tournament-prep greens at some of the UK&apos;s most demanding golf courses.
+              Chris Maynard didn&apos;t just learn lawn care on the job — he studied it. With a <strong className="text-fg font-semibold">BSc (Hons) in Turfgrass Science</strong> and 15 years of hands-on greenkeeping at some of the world&apos;s most demanding courses, he brings a level of scientific understanding that sets Green Stripe apart from every other lawn company in the region.
             </p></ScrollReveal>
             <ScrollReveal delay={0.15}><p>
-              Over 15 years, Chris mastered the art of turf management — understanding soil biology, microclimate adaptation, and the precise seasonal timing that separates good greens from championship greens. He learned to read a lawn the way a sommelier reads wine: the colour tells you about iron levels, the texture reveals thatch depth, the bounce reveals root structure.
+              His career has taken him from championship courses in Milton Keynes to <strong className="text-fg font-semibold">The London Club</strong> in Kent, and even across the Atlantic to <strong className="text-fg font-semibold">Pinehurst in the USA</strong> — one of the most prestigious golf resorts on the planet. At each venue, Chris mastered the art of reading turf: the colour tells you about iron levels, the texture reveals thatch depth, the bounce reveals root structure.
             </p></ScrollReveal>
             <ScrollReveal delay={0.2}><p>
-              When Chris and Jess moved to Widemouth Bay in 2024, they saw an opportunity. The lawns of North Cornwall and North Devon were crying out for the same level of expertise that Chris had been delivering to professional sports facilities for over a decade.
+              When Chris and Jess relocated to Widemouth Bay in 2024, they saw an opportunity. The lawns of North Cornwall and North Devon were crying out for the same level of scientific expertise that Chris had been delivering to professional sports facilities and world-class courses for over a decade.
             </p></ScrollReveal>
             <ScrollReveal delay={0.25}><p>
-              Green Stripe was born from that gap — bringing genuine championship-grade knowledge to residential and commercial properties within a 40-mile radius.
+              Green Stripe was born from that gap — bringing degree-level turfgrass science and genuine championship-grade knowledge to residential and commercial properties within a 40-mile radius.
             </p></ScrollReveal>
           </div>
 
@@ -84,11 +107,13 @@ export default function AboutPage() {
           <ScrollReveal delay={0.1}>
             <div className="mt-20 border-l-2 border-gold/30 pl-8 space-y-12">
               {[
-                { year: "2009", event: "Chris begins his greenkeeping career on professional golf courses" },
-                { year: "2012", event: "Advances to head greenkeeper, managing championship-level course preparation" },
+                { year: "2009", event: "Chris begins his greenkeeping career on championship courses in Milton Keynes" },
+                { year: "2013", event: "Earns BSc (Hons) in Turfgrass Science — the academic foundation behind every treatment" },
+                { year: "2015", event: "Advances to The London Club, Kent — managing championship-level course preparation" },
+                { year: "2017", event: "International experience at Pinehurst, USA — one of the world's most prestigious courses" },
                 { year: "2018", event: "Specialises in renovation and construction of new greens and tees" },
-                { year: "2024", event: "Chris & Jess relocate to Widemouth Bay and found Green Stripe Lawn Care" },
-                { year: "2025", event: "Serving 100+ lawns across 7 towns in North Cornwall and North Devon" },
+                { year: "2024", event: "Chris & Jess relocate to Widemouth Bay and launch Green Stripe Lawn Care" },
+                { year: "2025", event: "Serving 100+ lawns across 7 towns in North Cornwall & North Devon" },
               ].map((t, i) => (
                 <ScrollReveal key={t.year} delay={i * 0.1} direction="left" distance={20}>
                   <div className="relative">
@@ -126,24 +151,16 @@ export default function AboutPage() {
             </p></ScrollReveal>
           </div>
 
-          {/* Fleet Image */}
+          {/* Jess Portrait */}
           <ScrollReveal delay={0.3} className="mt-16">
-            <div className="relative aspect-[16/9] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(42,31,20,0.15)] border-2 border-gold/10">
+            <div className="relative aspect-[4/5] max-w-sm mx-auto rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(42,31,20,0.15)] border-2 border-gold/10">
               <Image
-                src="/images/real/branded-van.webp"
-                alt="Green Stripe branded transit van — serving North Cornwall and North Devon"
+                src="/images/real/jess-portrait.jpg"
+                alt="Jess Maynard — co-founder and client care manager at Green Stripe Lawn Care"
                 fill
                 className="object-cover warm-photo"
-                sizes="(max-width: 768px) 100vw, 800px"
+                sizes="(max-width: 768px) 100vw, 400px"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/30 to-transparent" />
-              <div className="absolute bottom-6 left-6">
-                <div className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-cream/90 backdrop-blur-md border border-gold/20 shadow-lg">
-                  <div className="w-2 h-2 rounded-full bg-accent" />
-                  <span className="text-xs font-medium text-fg tracking-wider uppercase">Our Fleet</span>
-                  <span className="ml-auto text-xs text-muted">Widemouth Bay</span>
-                </div>
-              </div>
             </div>
           </ScrollReveal>
         </div>
@@ -179,29 +196,32 @@ export default function AboutPage() {
       </section>
 
       {/* Trust Badges */}
-      <section className="py-16 bg-bg overflow-hidden">
-        <div className="max-w-4xl mx-auto px-6 md:px-12">
+      <section className="py-16 md:py-20 bg-bg overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-12">
           <ScrollReveal>
-            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
+            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
               {[
-                { label: "Fully Insured", icon: "🛡️" },
-                { label: "DBS Checked", icon: "✓" },
-                { label: "Free Consultations", icon: "💬" },
-                { label: "Results Guarantee", icon: "⭐" },
+                { label: "£1M Public Liability", Icon: ShieldCheck },
+                { label: "City & Guilds PA1/PA6", Icon: GraduationCap },
+                { label: "EA Waste Carrier", Icon: Truck },
+                { label: "DBS Checked", Icon: Fingerprint },
+                { label: "Free Consultations", Icon: MessageCircle },
+                { label: "Results Guarantee", Icon: Award },
               ].map((badge) => (
-                <div key={badge.label} className="flex items-center gap-3 text-sm text-muted">
-                  <span className="w-10 h-10 rounded-full bg-accent/10 border border-gold/20 flex items-center justify-center text-base">
-                    {badge.icon}
+                <div key={badge.label} className="group flex items-center gap-3 text-sm text-fg-light">
+                  <span className="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center group-hover:bg-accent/15 group-hover:border-accent/40 group-hover:shadow-[0_0_20px_rgba(26,154,138,0.15)] transition-all duration-500">
+                    <badge.Icon className="w-5 h-5 text-accent" strokeWidth={1.8} />
                   </span>
-                  <span className="font-medium tracking-wide">{badge.label}</span>
+                  <span className="font-medium tracking-wide text-fg">{badge.label}</span>
                 </div>
               ))}
             </div>
           </ScrollReveal>
+
+
         </div>
       </section>
 
-      <StatsSection />
       <ContactForm />
     </div>
   );

@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { reviews } from "@/lib/site-data";
-import StatsSection from "@/components/stats-section";
 import ContactForm from "@/components/contact-form";
 import ScrollReveal from "@/components/scroll-reveal";
 import { MapPin, Quote } from "lucide-react";
@@ -143,7 +142,6 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      <StatsSection />
       <ContactForm />
     </div>
   );

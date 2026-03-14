@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { packages } from "@/lib/site-data";
-import StatsSection from "@/components/stats-section";
 import ContactForm from "@/components/contact-form";
+import QuoteCalculator from "@/components/quote-calculator";
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/scroll-reveal";
 import { CheckCircle, Star, ArrowRight } from "lucide-react";
 
@@ -32,6 +32,9 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* Interactive Quote Calculator */}
+      <QuoteCalculator />
+
       {/* Pricing Cards */}
       <section className="py-24 md:py-36 bg-cream overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
@@ -39,9 +42,9 @@ export default function PricingPage() {
             {packages.map((pkg) => (
               <StaggerItem key={pkg.name}>
                 <div
-                  className={`relative rounded-3xl p-8 sm:p-10 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(42,31,20,0.12)] hover:-translate-y-2 ${
+                  className={`relative rounded-3xl p-6 sm:p-8 md:p-10 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(42,31,20,0.12)] hover:-translate-y-2 ${
                     pkg.highlighted
-                      ? "bg-fg text-cream border-2 border-fg shadow-[0_30px_80px_rgba(42,31,20,0.2)] scale-[1.02] md:scale-105"
+                      ? "bg-fg text-cream border-2 border-fg shadow-[0_30px_80px_rgba(42,31,20,0.2)] md:scale-105"
                       : "bg-bg border-2 border-gold/15 hover:border-gold/30"
                   }`}
                 >
@@ -63,7 +66,7 @@ export default function PricingPage() {
                   </div>
 
                   <div className="mb-8 pb-8 border-b border-gold/20">
-                    <p className={`text-4xl md:text-5xl font-heading font-bold ${pkg.highlighted ? "text-gold-light" : "text-fg"}`}>
+                    <p className={`text-3xl sm:text-4xl md:text-5xl font-heading font-bold ${pkg.highlighted ? "text-gold-light" : "text-fg"}`}>
                       {pkg.price}
                     </p>
                     <p className={`text-sm mt-1 ${pkg.highlighted ? "text-cream/50" : "text-muted"}`}>
@@ -104,6 +107,163 @@ export default function PricingPage() {
                 needs. No hidden fees, no surprises.
               </p>
             </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Seasonal Visit Calendar */}
+      <section className="py-20 md:py-28 bg-bg overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6 md:px-12">
+          <ScrollReveal>
+            <div className="editorial-line mb-8" />
+            <p className="text-sm tracking-[0.3em] uppercase text-muted mb-6">Your Annual Programme</p>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold text-fg mb-4 leading-[1.1]">
+              5 Seasonal <em className="italic text-accent">Visits</em>
+            </h2>
+            <p className="text-lg text-fg-light font-light mb-14 max-w-2xl">
+              Every programme is built around 5 expertly timed visits, calibrated to the natural growing cycle of your lawn.
+            </p>
+          </ScrollReveal>
+
+          {/* SVG gradient definitions for seasonal icons */}
+          <svg width="0" height="0" className="absolute">
+            <defs>
+              <linearGradient id="springGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#5a7c5a" />
+                <stop offset="100%" stopColor="#7fa37f" />
+              </linearGradient>
+              <linearGradient id="lateSpringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#4a7c4a" />
+                <stop offset="100%" stopColor="#6b9e6b" />
+              </linearGradient>
+              <linearGradient id="summerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#c1a773" />
+                <stop offset="100%" stopColor="#d4b880" />
+              </linearGradient>
+              <linearGradient id="autumnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#b07840" />
+                <stop offset="100%" stopColor="#c49058" />
+              </linearGradient>
+              <linearGradient id="winterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#7a9aaf" />
+                <stop offset="100%" stopColor="#9bb5c5" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4" stagger={0.08}>
+            {[
+              {
+                season: "Early Spring",
+                months: "Feb – Mar",
+                treatment: "Feed & Moss Control",
+                icon: (
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 36V20" stroke="url(#springGrad)" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M20 20C20 14 14 8 8 6C8 12 14 18 20 20Z" fill="url(#springGrad)" opacity="0.85" />
+                    <path d="M20 24C20 18 26 12 32 10C32 16 26 22 20 24Z" fill="url(#springGrad)" opacity="0.6" />
+                    <circle cx="20" cy="36" r="2" fill="url(#springGrad)" opacity="0.4" />
+                  </svg>
+                ),
+              },
+              {
+                season: "Late Spring",
+                months: "Apr – May",
+                treatment: "Feed & Weed Control",
+                icon: (
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 36V18" stroke="url(#lateSpringGrad)" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M20 18C18 12 12 6 6 4C6 10 12 16 18 18" fill="url(#lateSpringGrad)" opacity="0.9" />
+                    <path d="M20 18C22 12 28 6 34 4C34 10 28 16 22 18" fill="url(#lateSpringGrad)" opacity="0.9" />
+                    <path d="M20 26C18 20 12 14 6 12C6 18 12 24 18 26" fill="url(#lateSpringGrad)" opacity="0.6" />
+                    <path d="M20 26C22 20 28 14 34 12C34 18 28 24 22 26" fill="url(#lateSpringGrad)" opacity="0.6" />
+                    <path d="M20 8C20 4 20 2 20 2" stroke="url(#lateSpringGrad)" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
+                  </svg>
+                ),
+              },
+              {
+                season: "Summer",
+                months: "Jun – Aug",
+                treatment: "Feed & Stress Buster",
+                icon: (
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="8" fill="url(#summerGrad)" opacity="0.9" />
+                    <circle cx="20" cy="20" r="11" stroke="url(#summerGrad)" strokeWidth="1" opacity="0.2" />
+                    {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+                      <line
+                        key={angle}
+                        x1={20 + 13 * Math.cos((angle * Math.PI) / 180)}
+                        y1={20 + 13 * Math.sin((angle * Math.PI) / 180)}
+                        x2={20 + 17 * Math.cos((angle * Math.PI) / 180)}
+                        y2={20 + 17 * Math.sin((angle * Math.PI) / 180)}
+                        stroke="url(#summerGrad)"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        opacity="0.7"
+                      />
+                    ))}
+                  </svg>
+                ),
+              },
+              {
+                season: "Autumn",
+                months: "Sep – Nov",
+                treatment: "Feed & Weed Control",
+                icon: (
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 8C12 8 14 16 20 20C26 24 34 24 34 24C34 24 32 16 26 12C20 8 12 8 12 8Z" fill="url(#autumnGrad)" opacity="0.85" />
+                    <path d="M20 20L14 10" stroke="url(#autumnGrad)" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
+                    <path d="M20 20L28 14" stroke="url(#autumnGrad)" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
+                    <path d="M8 28C8 28 12 24 18 26C24 28 28 36 28 36" stroke="url(#autumnGrad)" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
+                  </svg>
+                ),
+              },
+              {
+                season: "Winter",
+                months: "Nov – Jan",
+                treatment: "Feed & Moss Control",
+                icon: (
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Main axes */}
+                    <line x1="20" y1="4" x2="20" y2="36" stroke="url(#winterGrad)" strokeWidth="1.5" strokeLinecap="round" />
+                    <line x1="6" y1="12" x2="34" y2="28" stroke="url(#winterGrad)" strokeWidth="1.5" strokeLinecap="round" />
+                    <line x1="6" y1="28" x2="34" y2="12" stroke="url(#winterGrad)" strokeWidth="1.5" strokeLinecap="round" />
+                    {/* Branch details */}
+                    <line x1="20" y1="8" x2="16" y2="10" stroke="url(#winterGrad)" strokeWidth="1" strokeLinecap="round" opacity="0.7" />
+                    <line x1="20" y1="8" x2="24" y2="10" stroke="url(#winterGrad)" strokeWidth="1" strokeLinecap="round" opacity="0.7" />
+                    <line x1="20" y1="32" x2="16" y2="30" stroke="url(#winterGrad)" strokeWidth="1" strokeLinecap="round" opacity="0.7" />
+                    <line x1="20" y1="32" x2="24" y2="30" stroke="url(#winterGrad)" strokeWidth="1" strokeLinecap="round" opacity="0.7" />
+                    <circle cx="20" cy="20" r="3" fill="url(#winterGrad)" opacity="0.3" />
+                    <circle cx="20" cy="20" r="1.5" fill="url(#winterGrad)" opacity="0.6" />
+                  </svg>
+                ),
+              },
+            ].map((v) => (
+              <StaggerItem key={v.season}>
+                <div className="group text-center p-6 rounded-2xl border border-gold/15 bg-cream/50 hover:border-accent/30 hover:shadow-[0_8px_30px_rgba(42,31,20,0.08)] hover:-translate-y-1 transition-all duration-500">
+                  <div className="flex items-center justify-center mb-4 w-16 h-16 mx-auto rounded-2xl bg-bg/80 border border-gold/10 group-hover:border-accent/20 group-hover:shadow-[0_4px_15px_rgba(90,124,90,0.12)] transition-all duration-500">
+                    {v.icon}
+                  </div>
+                  <p className="text-sm font-heading font-bold text-fg mb-1">{v.season}</p>
+                  <p className="text-[11px] text-muted tracking-wide uppercase mb-3">{v.months}</p>
+                  <p className="text-xs text-fg-light leading-relaxed">{v.treatment}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          <ScrollReveal delay={0.3}>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4 text-xs text-muted">
+              <span className="px-4 py-2 rounded-full border border-gold/15 bg-cream/30">Standard: 5 visits</span>
+              <span className="px-4 py-2 rounded-full border border-accent/20 bg-accent/5 text-accent font-medium">+ Premier: Annual Aeration</span>
+              <span className="px-4 py-2 rounded-full border border-gold/20 bg-gold/5 text-gold font-medium">+ Ultimate: Annual Scarification</span>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.35}>
+            <p className="text-center text-sm text-muted mt-8 font-light">
+              All programmes available on direct debit with up to <strong className="text-fg font-semibold">10% discount</strong>.
+            </p>
           </ScrollReveal>
         </div>
       </section>
@@ -150,7 +310,6 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <StatsSection />
       <ContactForm />
     </div>
   );

@@ -1,1 +1,0 @@
-Owned and run by husband-and-wife team Chris and Jess Maynard. Chris has over 15 years of experience running lawn care businesses and managing turf on top UK and international golf courses. Jess is the office manager ensuring flawless scheduling and client care.

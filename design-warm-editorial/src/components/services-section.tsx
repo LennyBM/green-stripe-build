@@ -6,14 +6,14 @@ import { motion } from "framer-motion";
 import { services } from "@/lib/site-data";
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/scroll-reveal";
 
-/* Map service slugs to premium AI-generated photos */
+/* Map service slugs to real photos from Green Stripe jobs */
 const serviceImages: Record<string, string> = {
-  "lawn-renovation": "/images/real/premium-lawn-renovation.png",
-  "scarifying": "/images/real/premium-scarifying.png",
-  "overseeding": "/images/real/premium-overseeding.png",
-  "moss-weed-treatment": "/images/real/premium-moss-treatment.png",
-  "seasonal-feeds": "/images/real/premium-seasonal-feeds.png",
-  "re-turfing": "/images/real/premium-returfing.png",
+  "lawn-renovation": "/images/real/scarifying-end-result.jpg",
+  "scarifying": "/images/real/scarifying-during.jpg",
+  "overseeding": "/images/real/scarifying-clearing.jpg",
+  "moss-weed-control": "/images/real/winter-health-check.jpg",
+  "lawn-care-programme": "/images/real/mowing-advice-lawn.jpg",
+  "re-turfing": "/images/real/fb-cover-striped-lawn.jpg",
 };
 
 interface Props {
@@ -27,18 +27,19 @@ export default function ServicesSection({ limit, showViewAll = false }: Props) {
   return (
     <section id="services" className="relative py-20 sm:py-32 md:py-48 bg-cream overflow-hidden">
       <div className="blob-accent w-[400px] h-[400px] top-20 -left-40" />
+      <div className="blob-accent w-[300px] h-[300px] bottom-40 -right-20 opacity-40" />
 
       <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
         <ScrollReveal className="mb-16 sm:mb-24 md:mb-36">
           <div className="editorial-line mb-8" />
           <p className="text-sm tracking-[0.3em] uppercase text-muted mb-6">Our Expertise</p>
           <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-heading font-bold leading-[1.05] text-fg max-w-3xl">
-            Built Out of Pride,<br />
-            Maintained with <em className="italic text-accent">Precision</em>
+            The Kind of Lawn<br />
+            People <em className="italic text-accent">Pause to Admire</em>
           </h2>
           <p className="mt-8 text-lg text-fg-light max-w-2xl leading-relaxed">
-            Serving a 40-mile radius across North Cornwall and North Devon — Bude, Wadebridge,
-            Padstow, Launceston, Okehampton, Bideford, and Holsworthy.
+            Championship-grade treatments that transform tired lawns into the envy of the street.
+            Serving homes across Bude, Wadebridge, Padstow, and beyond.
           </p>
         </ScrollReveal>
 
@@ -50,7 +51,7 @@ export default function ServicesSection({ limit, showViewAll = false }: Props) {
             return (
               <ScrollReveal key={s.num} delay={i * 0.05}>
                 <div
-                  className={`relative flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-start gap-6 sm:gap-8 md:gap-16 group`}
+                  className={`relative flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-start gap-6 sm:gap-8 md:gap-16 group rounded-3xl p-6 md:p-10 -mx-6 md:-mx-10 hover:bg-cream/60 hover:shadow-[0_20px_60px_rgba(42,31,20,0.06)] hover:border-gold/10 border border-transparent transition-all duration-500`}
                 >
                   <span className="absolute -top-2 sm:-top-4 md:-top-8 left-0 text-[80px] sm:text-[120px] md:text-[180px] font-heading font-bold text-gold/[0.08] leading-none select-none pointer-events-none z-0">
                     {s.num}
@@ -90,9 +91,9 @@ export default function ServicesSection({ limit, showViewAll = false }: Props) {
                       <div className="editorial-line" />
                       <Link
                         href={`/services/${s.slug}`}
-                        className="text-sm font-medium text-accent hover:text-accent-light transition-colors group-hover:translate-x-1 transform duration-300"
+                        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-gold/20 text-sm font-medium text-accent hover:bg-accent hover:text-cream hover:border-accent hover:shadow-[0_4px_20px_rgba(74,103,65,0.2)] transition-all duration-300"
                       >
-                        Learn More →
+                        Learn More <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
                       </Link>
                     </div>
                   </div>
@@ -106,7 +107,7 @@ export default function ServicesSection({ limit, showViewAll = false }: Props) {
           <ScrollReveal className="text-center mt-16">
             <Link
               href="/services"
-              className="btn-shimmer inline-block px-12 py-4 bg-fg text-cream rounded-full text-sm font-medium hover:bg-bg-dark hover:shadow-[0_0_20px_rgba(42,31,20,0.2)] transition-all"
+              className="btn-premium inline-block px-12 py-4 rounded-full text-sm font-semibold transition-all"
             >
               View All Services
             </Link>

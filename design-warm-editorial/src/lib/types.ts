@@ -37,3 +37,14 @@ export interface SocialLink {
   icon: LucideIcon;
   label: string;
 }
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  readingTime: string;
+  datePublished: string;
+  dateLabel: string;
+  body: string[];
+}
