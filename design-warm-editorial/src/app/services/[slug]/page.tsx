@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { services, caseStudies } from "@/lib/site-data";
-import StatsSection from "@/components/stats-section";
+
 import ContactForm from "@/components/contact-form";
 import { CheckCircle } from "lucide-react";
 
@@ -188,7 +188,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         </section>
       )}
 
-      <StatsSection />
+
       <ContactForm />
     </main>
   );

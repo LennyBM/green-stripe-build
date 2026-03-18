@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { areas, services } from "@/lib/site-data";
-import StatsSection from "@/components/stats-section";
+
 import ContactForm from "@/components/contact-form";
 import { MapPin } from "lucide-react";
 
@@ -183,7 +183,7 @@ export default async function AreaDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <StatsSection />
+
       <ContactForm />
     </main>
   );

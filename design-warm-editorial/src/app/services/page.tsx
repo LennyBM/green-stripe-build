@@ -1,7 +1,7 @@
 "use client";
 
 import ServicesSection from "@/components/services-section";
-import StatsSection from "@/components/stats-section";
+
 import ContactForm from "@/components/contact-form";
 import ScrollReveal from "@/components/scroll-reveal";
 
@@ -26,7 +26,7 @@ export default function ServicesPage() {
 
       {/* All services — no limit */}
       <ServicesSection />
-      <StatsSection />
+
       <ContactForm />
     </div>
   );
