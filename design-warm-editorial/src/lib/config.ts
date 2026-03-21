@@ -5,7 +5,7 @@
 export const SITE_CONFIG = {
   /* ── Business Identity ── */
   name: "Green Stripe Lawn Care",
-  tagline: "Championship-grade lawn care from Chris Maynard — 15 years on the UK's finest golf courses.",
+  tagline: "Championship-grade lawn care from Chris Maynard — 23 years in professional turf management.",
 
   /* ── Contact ── */
   phone: "+441288371343",
@@ -48,7 +48,7 @@ export const SITE_CONFIG = {
   },
 
   /* ── Business Metadata ── */
-  priceRange: "£45-£95",
+  priceRange: "£18-£35",
   ratingValue: "5.0",
   reviewCount: "8",
 
@@ -64,10 +64,13 @@ export const SITE_CONFIG = {
     { name: "Bude", region: "Cornwall" },
     { name: "Wadebridge", region: "Cornwall" },
     { name: "Padstow", region: "Cornwall" },
+    { name: "Rock", region: "Cornwall" },
+    { name: "Polzeath", region: "Cornwall" },
+    { name: "Tintagel", region: "Cornwall" },
+    { name: "Camelford", region: "Cornwall" },
+    { name: "Bodmin", region: "Cornwall" },
     { name: "Launceston", region: "Cornwall" },
     { name: "Holsworthy", region: "Devon" },
-    { name: "Okehampton", region: "Devon" },
-    { name: "Bideford", region: "Devon" },
   ],
 } as const;
 

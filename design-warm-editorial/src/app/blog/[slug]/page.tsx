@@ -195,7 +195,7 @@ export default async function BlogPostPage({ params }: Props) {
                   Chris Maynard
                 </h3>
                 <p className="text-sm text-fg-light font-light leading-relaxed">
-                  BSc (Hons) Turfgrass Science · 15 years managing championship
+                  BSc (Hons) Turfgrass Science · 23 years managing championship
                   golf courses including The London Club and Pinehurst Resort.
                   Founder of Green Stripe Lawn Care.
                 </p>

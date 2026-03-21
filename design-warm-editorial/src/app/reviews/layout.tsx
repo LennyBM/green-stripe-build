@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Reviews — 5-Star Client Testimonials",
   description:
-    "Read verified 5-star reviews from Green Stripe Lawn Care clients across Bude, Wadebridge, Padstow, Launceston, Okehampton, Bideford & Holsworthy.",
+    "Read verified 5-star reviews from Green Stripe Lawn Care clients across Bude, Padstow, Wadebridge, Rock, Camelford, Bodmin, Launceston & Holsworthy.",
   alternates: {
     canonical: "https://www.greenstripelawns.co.uk/reviews",
   },

@@ -57,7 +57,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       url: "https://www.greenstripelawns.co.uk",
     },
     areaServed: [
-      "Bude", "Wadebridge", "Padstow", "Launceston", "Okehampton", "Bideford", "Holsworthy",
+      "Bude", "Padstow", "Wadebridge", "Rock", "Polzeath", "Tintagel", "Camelford", "Bodmin", "Launceston", "Holsworthy",
     ],
     url: `https://www.greenstripelawns.co.uk/services/${service.slug}`,
   };

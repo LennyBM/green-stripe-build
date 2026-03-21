@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description:
-    `${SITE_CONFIG.tagline} Serving Bude, Wadebridge, Padstow, Launceston, Okehampton, Bideford & Holsworthy.`,
+    `${SITE_CONFIG.tagline} Serving Bude, Padstow, Wadebridge, Rock, Camelford, Bodmin, Launceston & Holsworthy.`,
   keywords: [
     "lawn care", "Cornwall", "Devon", "scarifying", "overseeding",
     "lawn renovation", "Bude", "Wadebridge", "Padstow", "turf management",

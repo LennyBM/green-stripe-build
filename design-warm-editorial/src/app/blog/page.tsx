@@ -64,7 +64,7 @@ export default function BlogPage() {
           </h1>
           <p className="text-xl text-fg-light font-light font-heading italic max-w-2xl">
             Seasonal tips, professional insights, and expert advice from
-            15 years managing championship greens.
+            23 years managing championship greens.
           </p>
         </div>
       </section>

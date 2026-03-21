@@ -97,7 +97,7 @@ export default function AboutSection() {
             <div className="space-y-6 text-lg text-fg-light leading-relaxed font-light">
               <p>We&apos;re a husband-and-wife team based in Widemouth Bay, and we genuinely love what we do. Every lawn we treat feels personal — because it is.</p>
               <p>
-                <strong className="text-fg font-semibold">Chris</strong> has spent over 15 years in professional turf management, learning his craft on some of the finest greens in the country. That same precision now goes into every home lawn we care for.
+                <strong className="text-fg font-semibold">Chris</strong> has spent over 23 years in professional turf management, learning his craft on some of the finest greens in the country. That same precision now goes into every home lawn we care for.
               </p>
               <p>
                 <strong className="text-fg font-semibold">Jess</strong> runs the business side — scheduling, communications, and making sure every customer feels looked after from the first call.

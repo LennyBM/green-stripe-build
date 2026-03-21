@@ -19,7 +19,7 @@ export const localBusinessJsonLd = {
   url: SITE_CONFIG.url,
   telephone: SITE_CONFIG.phone,
   email: SITE_CONFIG.email,
-  description: `${SITE_CONFIG.tagline} Serving Bude, Wadebridge, Padstow, Launceston, Okehampton, Bideford & Holsworthy.`,
+  description: `${SITE_CONFIG.tagline} Serving Bude, Padstow, Wadebridge, Rock, Camelford, Bodmin, Launceston & Holsworthy.`,
   address: {
     "@type": "PostalAddress",
     addressLocality: SITE_CONFIG.address.locality,
@@ -69,12 +69,12 @@ export const localBusinessJsonLd = {
     "@type": "OfferCatalog",
     name: "Lawn Care Services",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Complete Lawn Renovations" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "4-Pass Scarifying" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Overseeding & Top Dressing" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Moss & Weed Control" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Lawn Care Programmes" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Re-Turfing" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Complete Lawn Renovations" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Lawn Grub Control" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Red Thread Treatment" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Water Conserver" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Hard Surface Moss & Weed Control" } },
     ],
   },
   openingHoursSpecification: {
@@ -92,7 +92,7 @@ export const serviceJsonLd = {
   serviceType: "Lawn Care",
   name: "Professional Lawn Care Services",
   description:
-    "Championship-grade lawn care including scarifying, overseeding, renovations, moss & weed control, and year-round lawn care programmes.",
+    "Championship-grade lawn care including lawn care programmes, renovations, grub control, red thread treatment, water conserver, and hard surface treatments.",
   provider: {
     "@type": "LocalBusiness",
     name: SITE_CONFIG.name,
@@ -103,15 +103,12 @@ export const serviceJsonLd = {
     "@type": "OfferCatalog",
     name: "Lawn Care Services",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Complete Lawn Renovations", url: `${SITE_CONFIG.url}/services/lawn-renovation` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "4-Pass Scarifying", url: `${SITE_CONFIG.url}/services/scarifying` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Overseeding & Top Dressing", url: `${SITE_CONFIG.url}/services/overseeding` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Moss & Weed Control", url: `${SITE_CONFIG.url}/services/moss-weed-control` } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Lawn Care Programmes", url: `${SITE_CONFIG.url}/services/lawn-care-programme` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Re-Turfing", url: `${SITE_CONFIG.url}/services/re-turfing` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Lawn Pest Control", url: `${SITE_CONFIG.url}/services/pest-control` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Disease Management", url: `${SITE_CONFIG.url}/services/disease-management` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Wetting Agent Treatments", url: `${SITE_CONFIG.url}/services/wetting-agents` } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Complete Lawn Renovations", url: `${SITE_CONFIG.url}/services/lawn-renovation` } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Lawn Grub Control", url: `${SITE_CONFIG.url}/services/pest-control` } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Red Thread Treatment", url: `${SITE_CONFIG.url}/services/disease-management` } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Water Conserver", url: `${SITE_CONFIG.url}/services/water-conserver` } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Hard Surface Moss & Weed Control", url: `${SITE_CONFIG.url}/services/hard-surface-treatment` } },
     ],
   },
 };

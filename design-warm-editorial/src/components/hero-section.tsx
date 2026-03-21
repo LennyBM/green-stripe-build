@@ -113,22 +113,14 @@ export default function HeroSection() {
 
       {/* ── Layer 1: Full-bleed cinematic background ── */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY, scale: bgScale }}>
-        {/* Video background — uses native poster for instant first-frame display */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/images/real/hero-cornish-bungalow.webp"
+        {/* Static background image — replaces AI video per client request */}
+        <img
+          src="/images/real/hero-cornish-bungalow.webp"
+          alt="Perfectly striped lawn outside a luxury Cornish home"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: "center 30%" }}
-          aria-label="Cinematic lawn striping video showcasing Green Stripe's professional results"
-        >
-          <source src="/videos/hero-lawn-striping.webm" type="video/webm" />
-          <source src="/videos/hero-lawn-striping.mp4#t=0.001" type="video/mp4" />
-          Your browser does not support the video element.
-        </video>
+          fetchPriority="high"
+        />
         {/* Dark cinematic overlays — Apple-style */}
         <div className="absolute inset-0 bg-gradient-to-r from-bg-dark/90 via-bg-dark/60 to-bg-dark/30" />
         <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/80 via-bg-dark/20 to-bg-dark/40" />
@@ -272,8 +264,8 @@ export default function HeroSection() {
                   {/* Stats grid */}
                   <div className="grid grid-cols-2 gap-6">
                     {[
-                      { val: 15, suffix: "+", label: "Years\nExperience" },
-                      { val: 100, suffix: "+", label: "Happy\nCustomers" },
+                      { val: 23, suffix: "+", label: "Years\nExperience" },
+                      { val: 120, suffix: "+", label: "Happy\nCustomers" },
                       { val: 40, suffix: "mi", label: "Service\nRadius" },
                       { val: 5, suffix: ".0", label: "Star\nRating" },
                     ].map((s, i) => (

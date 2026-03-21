@@ -51,7 +51,7 @@ export default function Footer() {
               className="w-16 h-16 rounded-full object-cover opacity-90 mb-5"
             />
             <p className="text-cream/35 font-light leading-relaxed text-sm mb-8">
-              Championship-grade lawn care from Chris Maynard. 15 years on championship golf courses, now bringing
+              Championship-grade lawn care from Chris Maynard. 23 years in professional turf management, now bringing
               artisan precision to homes across North Cornwall &amp; North Devon.
             </p>
             {/* Social links */}

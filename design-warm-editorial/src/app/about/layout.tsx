@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Lawn Care Specialist Cornwall — Meet Chris & Jess Maynard",
   description:
-    "Green Stripe Lawn Care was founded by Chris Maynard — BSc Turfgrass Science, 15 years on championship golf courses including Pinehurst USA & The London Club. Serving North Cornwall & Devon.",
+    "Green Stripe Lawn Care was founded by Chris Maynard — BSc Turfgrass Science, 23 years in professional turf management including Pinehurst USA & The London Club. Serving North Cornwall & Devon.",
   alternates: {
     canonical: "https://www.greenstripelawns.co.uk/about",
   },
   openGraph: {
     title: "About Green Stripe Lawn Care — Championship Pedigree",
     description:
-      "Meet Chris & Jess Maynard. 15 years of championship greenkeeping expertise, now serving North Cornwall & North Devon homeowners.",
+      "Meet Chris & Jess Maynard. 23 years of professional turf management expertise, now serving North Cornwall & North Devon homeowners.",
     url: "https://www.greenstripelawns.co.uk/about",
     images: [
       {

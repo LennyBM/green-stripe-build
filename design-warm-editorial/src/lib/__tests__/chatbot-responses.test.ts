@@ -22,25 +22,25 @@ describe("getResponse (chatbot knowledge-base matcher)", () => {
   describe("services", () => {
     it("responds to service enquiry", () => {
       const response = getResponse("What services do you offer?");
+      expect(response).toContain("Lawn Care Programmes");
       expect(response).toContain("Lawn Renovations");
-      expect(response).toContain("Scarifying");
     });
   });
 
   describe("scarifying", () => {
     it("responds to 'scarifying' keyword", () => {
       const response = getResponse("Tell me about scarifying");
-      expect(response).toContain("4-Pass Scarifying");
-      expect(response).toContain("graduated depths");
+      expect(response).toContain("Scarification");
+      expect(response).toContain("double pass");
     });
   });
 
   describe("pricing", () => {
     it("responds to 'how much' with programme prices", () => {
       const response = getResponse("How much does it cost?");
-      expect(response).toContain("£45");
-      expect(response).toContain("£65");
-      expect(response).toContain("£95");
+      expect(response).toContain("£18");
+      expect(response).toContain("£25");
+      expect(response).toContain("£35");
     });
   });
 
@@ -51,9 +51,9 @@ describe("getResponse (chatbot knowledge-base matcher)", () => {
       expect(response).toContain("Bude");
     });
 
-    it("includes all 7 service areas", () => {
+    it("includes core service areas", () => {
       const response = getResponse("What areas do you cover?");
-      for (const area of ["Bude", "Wadebridge", "Padstow", "Launceston", "Okehampton", "Bideford", "Holsworthy"]) {
+      for (const area of ["Bude", "Wadebridge", "Padstow", "Rock", "Camelford", "Launceston", "Holsworthy"]) {
         expect(response).toContain(area);
       }
     });
@@ -92,6 +92,14 @@ describe("getResponse (chatbot knowledge-base matcher)", () => {
       const response = getResponse("random question xyz");
       // WhatsApp URL should come from config helper, not hardcoded
       expect(response).toContain("wa.me");
+    });
+  });
+
+  describe("hard surfaces", () => {
+    it("responds to hard surface enquiry", () => {
+      const response = getResponse("Can you treat my patio?");
+      expect(response).toContain("Moss & Biocide");
+      expect(response).toContain("Weed Control");
     });
   });
 });

@@ -68,7 +68,7 @@ export default function AboutPage() {
                     Green Stripe Lawn Care was founded by husband-and-wife team <strong className="text-fg font-semibold">Chris</strong> and <strong className="text-fg font-semibold">Jess Maynard</strong> with a single conviction: every home lawn deserves the same care and precision given to a championship golf green.
                   </p>
                   <p>
-                    We&apos;re a local family-run business that treats every lawn as if it were our own. Chris brings 15 years of championship greenkeeping expertise; Jess ensures every client receives seamless communication and a premium experience from first call to final stripe.
+                    We&apos;re a local family-run business that treats every lawn as if it were our own. Chris brings 23 years of professional turf management expertise; Jess ensures every client receives seamless communication and a premium experience from first call to final stripe.
                   </p>
                 </div>
               </ScrollReveal>
@@ -84,13 +84,13 @@ export default function AboutPage() {
             <div className="editorial-line mb-8" />
             <p className="text-sm tracking-[0.3em] uppercase text-muted mb-6">The Greenkeeper</p>
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-fg mb-12 leading-[1.1]">
-              15 Years on the UK&apos;s <em className="italic text-accent">Finest Turf</em>
+              23 Years on the UK&apos;s <em className="italic text-accent">Finest Turf</em>
             </h2>
           </ScrollReveal>
 
           <div className="space-y-8 text-lg text-fg-light leading-relaxed font-light">
             <ScrollReveal delay={0.1}><p>
-              Chris Maynard didn&apos;t just learn lawn care on the job — he studied it. With a <strong className="text-fg font-semibold">BSc (Hons) in Turfgrass Science</strong> and 15 years of hands-on greenkeeping at some of the world&apos;s most demanding courses, he brings a level of scientific understanding that sets Green Stripe apart from every other lawn company in the region.
+              Chris Maynard didn&apos;t just learn lawn care on the job — he studied it. With a <strong className="text-fg font-semibold">BSc (Hons) in Turfgrass Science</strong> and 23 years of hands-on greenkeeping at some of the world&apos;s most demanding courses, he brings a level of scientific understanding that sets Green Stripe apart from every other lawn company in the region.
             </p></ScrollReveal>
             <ScrollReveal delay={0.15}><p>
               His career has taken him from championship courses in Milton Keynes to <strong className="text-fg font-semibold">The London Club</strong> in Kent, and even across the Atlantic to <strong className="text-fg font-semibold">Pinehurst in the USA</strong> — one of the most prestigious golf resorts on the planet. At each venue, Chris mastered the art of reading turf: the colour tells you about iron levels, the texture reveals thatch depth, the bounce reveals root structure.
@@ -107,13 +107,13 @@ export default function AboutPage() {
           <ScrollReveal delay={0.1}>
             <div className="mt-20 border-l-2 border-gold/30 pl-8 space-y-12">
               {[
-                { year: "2009", event: "Chris begins his greenkeeping career on championship courses in Milton Keynes" },
+                { year: "2003", event: "Chris begins his greenkeeping career at age 18 — though he'd been mowing lawns since age 13" },
                 { year: "2013", event: "Earns BSc (Hons) in Turfgrass Science — the academic foundation behind every treatment" },
                 { year: "2015", event: "Advances to The London Club, Kent — managing championship-level course preparation" },
                 { year: "2017", event: "International experience at Pinehurst, USA — one of the world's most prestigious courses" },
                 { year: "2018", event: "Specialises in renovation and construction of new greens and tees" },
                 { year: "2024", event: "Chris & Jess relocate to Widemouth Bay and launch Green Stripe Lawn Care" },
-                { year: "2025", event: "Serving 100+ lawns across 7 towns in North Cornwall & North Devon" },
+                { year: "2026", event: "Serving 120+ lawns across North Cornwall & North Devon" },
               ].map((t, i) => (
                 <ScrollReveal key={t.year} delay={i * 0.1} direction="left" distance={20}>
                   <div className="relative">

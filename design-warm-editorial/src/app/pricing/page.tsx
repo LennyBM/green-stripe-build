@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { packages } from "@/lib/site-data";
 import ContactForm from "@/components/contact-form";
-import QuoteCalculator from "@/components/quote-calculator";
+
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/scroll-reveal";
 import { CheckCircle, Star, ArrowRight } from "lucide-react";
 
@@ -32,8 +32,30 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Interactive Quote Calculator */}
-      <QuoteCalculator />
+      {/* Free Quote CTA */}
+      <section className="py-16 md:py-20 bg-bg overflow-hidden">
+        <div className="max-w-3xl mx-auto px-6 md:px-12 text-center">
+          <ScrollReveal>
+            <div className="rounded-3xl border-2 border-gold/20 bg-cream/50 backdrop-blur-sm p-10 md:p-14">
+              <p className="text-sm tracking-[0.3em] uppercase text-gold mb-4 font-medium">Tailored To Your Lawn</p>
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-fg mb-4 leading-[1.1]">
+                Every Lawn Is <em className="italic text-accent">Different</em>
+              </h2>
+              <p className="text-fg-light font-light leading-relaxed mb-8 max-w-xl mx-auto">
+                Pricing is based on lawn size and condition. The prices below are starting points
+                for a 100m² lawn. For an accurate quote, book a free consultation with Chris —
+                he&apos;ll assess your lawn in person and design a bespoke programme.
+              </p>
+              <Link
+                href="/contact"
+                className="btn-shimmer inline-flex items-center gap-2 px-10 py-4 bg-fg text-cream rounded-full text-sm font-medium hover:bg-accent hover:shadow-[0_0_30px_rgba(45,90,39,0.3)] transition-all duration-300"
+              >
+                Get Your Free Quote <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
       {/* Pricing Cards */}
       <section className="py-24 md:py-36 bg-cream overflow-hidden">

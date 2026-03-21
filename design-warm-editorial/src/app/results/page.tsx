@@ -123,40 +123,40 @@ export default function ResultsPage() {
           <div className="space-y-10 md:space-y-14">
             <ScrollReveal delay={0.1}>
               <ImageComparison
-                before="/images/real/before-weedy.webp"
-                after="/images/real/after-striped.webp"
+                before="/images/real/yeolmbridge-before.jpg"
+                after="/images/real/yeolmbridge-after.jpg"
                 beforeLabel="Before"
                 afterLabel="After"
                 className="shadow-[0_20px_60px_rgba(42,31,20,0.15)] border-2 border-gold/15"
               />
               <p className="mt-3 text-center text-sm text-muted font-light">
-                Weed-infested lawn → Championship stripes in 8 weeks
+                Yeolmbridge — Drought-damaged lawn to healthy, lush sward
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={0.15}>
               <ImageComparison
-                before="/images/real/before-mossy.webp"
-                after="/images/real/after-lush.webp"
+                before="/images/real/bude-before.jpg"
+                after="/images/real/bude-after.jpg"
                 beforeLabel="Before"
                 afterLabel="After"
                 className="shadow-[0_20px_60px_rgba(42,31,20,0.15)] border-2 border-gold/15"
               />
               <p className="mt-3 text-center text-sm text-muted font-light">
-                Heavy moss coverage → Vibrant, healthy green turf
+                Bude — Complete lawn renovation and recovery
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={0.2}>
               <ImageComparison
-                before="/images/real/before-patchy.webp"
-                after="/images/real/after-renovated.webp"
+                before="/images/real/turf-rock-before.jpg"
+                after="/images/real/turf-rock-after.jpg"
                 beforeLabel="Before"
                 afterLabel="After"
                 className="shadow-[0_20px_60px_rgba(42,31,20,0.15)] border-2 border-gold/15"
               />
               <p className="mt-3 text-center text-sm text-muted font-light">
-                Thin, patchy lawn → Full renovation with overseeding
+                Rock — New turf laid, extending an existing lawn for a holiday let
               </p>
             </ScrollReveal>
           </div>

@@ -5,25 +5,25 @@ import ScrollReveal from "@/components/scroll-reveal";
 
 const comparisons = [
   {
-    before: "/images/real/before-weedy.webp",
-    after: "/images/real/after-striped.webp",
+    before: "/images/real/yeolmbridge-before.jpg",
+    after: "/images/real/yeolmbridge-after.jpg",
     beforeLabel: "Before Treatment",
     afterLabel: "After Green Stripe",
-    caption: "Weedy, neglected lawn → Championship stripes in 8 weeks",
+    caption: "Yeolmbridge — Drought-damaged lawn to healthy, lush sward",
   },
   {
-    before: "/images/real/before-mossy.webp",
-    after: "/images/real/after-lush.webp",
+    before: "/images/real/bude-before.jpg",
+    after: "/images/real/bude-after.jpg",
     beforeLabel: "Before Treatment",
     afterLabel: "After Green Stripe",
-    caption: "Heavy moss infestation → Lush, healthy green turf",
+    caption: "Bude — Complete lawn renovation and recovery",
   },
   {
     before: "/images/real/turf-rock-before.jpg",
     after: "/images/real/turf-rock-after.jpg",
     beforeLabel: "Before Turfing",
     afterLabel: "After Green Stripe",
-    caption: "New turf laid in Rock — extending an existing lawn for a holiday let",
+    caption: "Rock — New turf laid, extending an existing lawn for a holiday let",
   },
 ];
 
